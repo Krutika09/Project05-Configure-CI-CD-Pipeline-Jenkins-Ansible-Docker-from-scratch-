@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "myapp:v1"
+        IMAGE_NAME = "krutika09/project05-ansible-cicd:v1"
     }
 
     stages {
