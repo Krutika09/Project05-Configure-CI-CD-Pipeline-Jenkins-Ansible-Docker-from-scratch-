@@ -5,11 +5,6 @@
     - name: Stop and remove existing container (if any)
       shell: docker stop myapp || true && docker rm myapp || true
 
-    - name: Copy Docker image tar file
-      copy:
-        src: myapp.tar
-        dest: /tmp/myapp.tar
-
     - name: Load Docker image on target
       shell: docker load < /tmp/myapp.tar
 
