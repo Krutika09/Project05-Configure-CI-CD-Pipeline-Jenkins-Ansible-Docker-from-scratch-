@@ -2,17 +2,17 @@
 - hosts: target
   become: yes
   tasks:
-    - name: Stop existing container
+    - name: Stop and remove existing container (if any)
       shell: docker stop myapp || true && docker rm myapp || true
 
-    - name: Copy Docker image from Jenkins to remote
-      synchronize:
-        src: /var/lib/jenkins/workspace/ansible
-        dest: /tmp/app
+    - name: Copy Docker image tar file to target
+      copy:
+        src: ansible/../myapp.tar  # Adjusts to Jenkins workspace structure
+        dest: /tmp/myapp.tar
 
-    - name: Load Docker image
-      shell: docker load < /tmp/app/myapp.tar
+    - name: Load Docker image on target
+      shell: docker load < /tmp/myapp.tar
 
-    - name: Run container
-      shell: docker run -d --name myapp -p 80:5000 myapp:v1
+    - name: Run container from loaded image
+      shell: docker run -d --name myapp -p 80:5000 krutika09/project05-ansible-cicd:v1
 
