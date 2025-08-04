@@ -1,15 +1,11 @@
----
-- hosts: target
-  become: yes
-  tasks:
-    - name: Stop and remove existing container (if any)
-      shell: docker stop myapp || true && docker rm myapp || true
+- name: Copy Docker image tar file
+  copy:
+    src: /path/to/myapp.tar
+    dest: /tmp/myapp.tar
 
+- name: Load Docker image
+  shell: docker load < /tmp/myapp.tar
 
-    - name: Pull image from DockerHub
-      shell: docker pull krutika09/project05-ansible-cicd:v1
-
-
-    - name: Run container from loaded image
-      shell: docker run -d --name myapp -p 80:5000 krutika09/project05-ansible-cicd:v1
+- name: Run container
+  shell: docker run -d --name myapp -p 80:5000 krutika09/project05-ansible-cicd:v1
 
