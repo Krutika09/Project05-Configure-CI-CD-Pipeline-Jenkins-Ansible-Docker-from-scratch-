@@ -1,0 +1,3 @@
+[target]
+34.218.206.248 ansible_user=root ansible_password=redhat
+

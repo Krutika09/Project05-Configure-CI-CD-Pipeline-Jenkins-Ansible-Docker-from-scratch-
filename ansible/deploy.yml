@@ -1,0 +1,21 @@
+- name: Deploy Docker container on target
+  hosts: all
+  become: yes
+  tasks:
+    - name: Stop existing container
+      shell: docker rm -f flaskapp || true
+
+    - name: Remove old image
+      shell: docker rmi flaskapp:latest || true
+
+    - name: Copy image tar to remote
+      copy:
+        src: /tmp/flaskapp.tar
+        dest: /tmp/flaskapp.tar
+
+    - name: Load image from tar
+      shell: docker load -i /tmp/flaskapp.tar
+
+    - name: Run container
+      shell: docker run -d --name flaskapp -p 80:5000 flaskapp:latest
+
