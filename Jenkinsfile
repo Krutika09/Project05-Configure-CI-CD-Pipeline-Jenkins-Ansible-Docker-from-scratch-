@@ -17,6 +17,12 @@ pipeline {
                 sh 'docker build -t $IMAGE_NAME .'
             }
         }
+ 	
+	stage('Save Docker Image as TAR') {
+            steps {
+                sh 'docker save -o myapp.tar $IMAGE_NAME'
+            }
+        }
 
 	stage('Push to DockerHub') {
             steps {

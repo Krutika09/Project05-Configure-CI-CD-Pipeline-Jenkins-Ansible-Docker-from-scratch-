@@ -7,7 +7,7 @@
 
     - name: Copy Docker image tar file
       copy:
-        src: /var/lib/jenkins/workspace/Ansible-CICD/myapp.tar
+        src: myapp.tar
         dest: /tmp/myapp.tar
 
     - name: Load Docker image on target
