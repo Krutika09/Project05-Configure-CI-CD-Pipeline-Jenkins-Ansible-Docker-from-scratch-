@@ -1,16 +1,13 @@
 FROM python:3.9
 
 WORKDIR /app
+
 COPY requirements.txt .
-RUN pip install -r requirements.txt
-
-RUN pip install -r requirements.txt && \
-    rm -rf /root/.cache
-
+RUN pip install -r requirements.txt && rm -rf /root/.cache
 
 COPY . .
 
 EXPOSE 5000
 
-CMD [python3, app.py]
+CMD ["python3", "app.py"]
 

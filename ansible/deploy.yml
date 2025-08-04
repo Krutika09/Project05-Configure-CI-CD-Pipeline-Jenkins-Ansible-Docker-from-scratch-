@@ -19,5 +19,5 @@
         image: krutika09/project05-ansible-cicd:v1
         state: started
         ports:
-          - "80:80"
+          - "80:5000"
 
