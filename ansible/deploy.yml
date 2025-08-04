@@ -10,13 +10,13 @@
     - name: Pull Docker image from DockerHub
       docker_image:
         name: krutika09/project05-ansible-cicd
-        tag: v1
+        tag: v2     # <---- CHANGE THIS TO v2
         source: pull
 
     - name: Run container from pulled image
       docker_container:
         name: myapp
-        image: krutika09/project05-ansible-cicd:v1
+        image: krutika09/project05-ansible-cicd:v2   # <---- CHANGE THIS TO v2
         state: started
         ports:
           - "80:5000"
