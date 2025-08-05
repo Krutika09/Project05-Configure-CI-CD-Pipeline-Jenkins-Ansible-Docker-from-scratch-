@@ -6,6 +6,7 @@
 
 * **Control Node**: Where Jenkins, Ansible, Docker will run.
 * **Target Node**: Where the application will be deployed.
+<img width="1335" height="249" alt="image" src="https://github.com/user-attachments/assets/18126dbd-1e0a-473b-b598-0326a2849305" />
 
 ### 🔹2. Security Group Configuration
 
@@ -101,6 +102,8 @@ From the control node, verify SSH login to target using:
 ssh root@<TargetNode-IP>
 # enter password 
 ```
+<img width="887" height="607" alt="image" src="https://github.com/user-attachments/assets/788a7eb4-1801-4a2c-96b6-bfd30b7b287a" />
+
 
 If successful, create the Ansible inventory:
 
@@ -116,6 +119,7 @@ If successful, create the Ansible inventory:
 ansible all --inventory inventory --list-hosts
 ansible all --inventory inventory -m ping
 ```
+<img width="1072" height="153" alt="image" src="https://github.com/user-attachments/assets/70783abf-4fb3-4cb7-8384-c201661cfabe" />
 
 ---
 
@@ -133,7 +137,6 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 Install suggested plugins. Create admin user.
 
----
 
 ### 🔹14. Create Pipeline Job in Jenkins
 
@@ -145,9 +148,6 @@ Install suggested plugins. Create admin user.
 * Go to **Jenkins > Manage Jenkins > Credentials > Global**
 * Add **username + password/token** as **"DockerHub"**
 
----
-
-
 ### 🔹16. Run the Jenkins Pipeline
 
 This should:
@@ -156,8 +156,9 @@ This should:
 * Build the Docker image
 * Copy or deploy to the Target EC2 using Ansible
 * Start the app
+* 
+<img width="882" height="535" alt="image" src="https://github.com/user-attachments/assets/9d275e8f-4e73-43ac-ab04-7612783580b4" />
 
----
 
 ## ✅ PHASE 7: Verify Application
 
@@ -166,4 +167,7 @@ Access the deployed app:
 ```bash
 http://<TargetNode-IP>
 ```
+<img width="1081" height="71" alt="image" src="https://github.com/user-attachments/assets/829397a7-3ce1-4d60-9212-3bd2168485b7" />
+
+<img width="685" height="208" alt="image" src="https://github.com/user-attachments/assets/173ab543-b7e6-4ac0-9934-b682f9abeb37" />
 
