@@ -147,6 +147,11 @@ Install suggested plugins. Create admin user.
 ### 🔹15. Add DockerHub Credentials in Jenkins
 * Go to **Jenkins > Manage Jenkins > Credentials > Global**
 * Add **username + password/token** as **"DockerHub"**
+* Add Jenkins to docker group & Restart Jenkins 
+```
+sudo usermod -aG docker jenkins
+sudo systemctl restart jenkins
+```
 
 ### 🔹16. Run the Jenkins Pipeline
 
